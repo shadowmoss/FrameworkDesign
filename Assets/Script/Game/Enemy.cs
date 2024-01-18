@@ -13,7 +13,7 @@ namespace FrameworkDesign.Example {
             Destroy(this.gameObject);
             if (enemyDown >= 10)
             {
-                EndPanel.SetActive(true);
+                GamePassEvent.Trigger();
             }
         }
 
