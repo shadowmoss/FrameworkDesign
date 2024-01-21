@@ -11,7 +11,7 @@ namespace FrameworkDesign.Example {
         }
         private void OnDestroy()
         {
-            GamePassEvent.Unregister(OnPassEvent);
+            GamePassEvent.UnRegister(OnPassEvent);
         }
         private void OnPassEvent() { 
             this.transform.Find("Canvas/EndPanel").gameObject.SetActive(true);

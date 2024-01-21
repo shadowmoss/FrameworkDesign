@@ -8,7 +8,6 @@ namespace FrameworkDesign.Example {
         {
             GameStartEvent.Register(OnStart);
         }
-
         private void OnDestroy()
         {
             GameStartEvent.Unregister(OnStart);

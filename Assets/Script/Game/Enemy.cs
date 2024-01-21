@@ -5,17 +5,12 @@ using UnityEngine;
 namespace FrameworkDesign.Example {
     public class Enemy : MonoBehaviour
     {
-        private static int enemyDown = 0;
-        public GameObject EndPanel;
         private void OnMouseDown()
         {
-            enemyDown++;
             Destroy(this.gameObject);
-            if (enemyDown >= 10)
-            {
-                GamePassEvent.Trigger();
-            }
+            // 交互逻辑,替换为Command实现交互逻辑
+            new KillEnemyCommand().Execute();
+            
         }
-
     }
 }

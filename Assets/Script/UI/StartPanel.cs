@@ -13,8 +13,8 @@ namespace FrameworkDesign.Example
             this.transform.Find("BtnStart").GetComponent<Button>().onClick.AddListener(() => {
                 // 将开始Panel自身隐藏
                 gameObject.SetActive(false);
-                // 在注册的委托当中触发事件。
-                GameStartEvent.Trigger();
+                // 事件由系统层向表现层发送
+                new GameStartCommand().Execute();
             });
         }
     }
