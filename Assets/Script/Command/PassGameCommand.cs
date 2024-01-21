@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace FrameworkDesign.Example
 {
-    public class PassGameCommand : ICommand
-    {
-        public void Execute()
+    public class PassGameCommand : AbstractCommand, ICommand
+    { 
+        protected override void OnExecute()
         {
             GamePassEvent.Trigger();
         }

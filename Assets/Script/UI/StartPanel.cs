@@ -5,8 +5,13 @@ using UnityEngine.UI;
 
 namespace FrameworkDesign.Example
 {
-    public class StartPanel : MonoBehaviour
+    public class StartPanel : MonoBehaviour,IController
     {
+        public IArchitecture GetArchitecture()
+        {
+            return PointGame.Instance;
+        }
+
         private void Start()
         {
             // 视图中的父节点获取子节点，注册委托。
@@ -14,7 +19,7 @@ namespace FrameworkDesign.Example
                 // 将开始Panel自身隐藏
                 gameObject.SetActive(false);
                 // 事件由系统层向表现层发送
-                new GameStartCommand().Execute();
+                GetArchitecture().SendCommand<GameStartCommand>();
             });
         }
     }

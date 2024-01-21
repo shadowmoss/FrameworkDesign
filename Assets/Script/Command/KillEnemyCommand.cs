@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace FrameworkDesign.Example {
-    public class KillEnemyCommand : ICommand
+    public class KillEnemyCommand : AbstractCommand, ICommand
     {
-        public void Execute()
+        protected override void OnExecute()
         {
-            PointGame.Get<GameModel>().KillCount.Value++;
+            PointGame.Get<IGameModel>().KillCount.Value++;
 
-            if(PointGame.Get<GameModel>().KillCount.Value >= 10 )
+            if (PointGame.Get<IGameModel>().KillCount.Value >= 10)
             {
                 // 发送 结束事件。
                 GamePassEvent.Trigger();

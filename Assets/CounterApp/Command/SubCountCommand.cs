@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace CounterApp {
-    public struct SubCountCommand : ICommand
+    public class SubCountCommand : AbstractCommand, ICommand
     {
-        public void Execute()
+
+        protected override void OnExecute()
         {
-            CounterApp.Get<CounterModel>().Count.Value--;
+            CounterApp.Get<ICounterModel>().Count.Value--;
         }
     }
 }

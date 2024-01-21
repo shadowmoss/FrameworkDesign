@@ -4,11 +4,12 @@ using UnityEngine;
 using FrameworkDesign;
 namespace CounterApp
 {
-    public struct AddCountCommand : ICommand
+    public class AddCountCommand : AbstractCommand,ICommand
     {
-        public void Execute()
+
+        protected override void OnExecute()
         {
-            CounterApp.Get<CounterModel>().Count.Value++;
+            CounterApp.Get<ICounterModel>().Count.Value++;
         }
     }
 }

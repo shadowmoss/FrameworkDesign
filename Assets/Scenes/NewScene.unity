@@ -261,7 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &95350402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -629,7 +628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!1 &273393381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &907956449
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1158,7 +1155,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &912750035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1269,7 +1265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &982397146
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1380,7 +1375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &1026253404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1491,7 +1485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &1354877240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1990,7 +1983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &1560673971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2101,7 +2093,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &1644211590
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2384,7 +2375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2dbb664e7bec44fa015bc408128eca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndPanel: {fileID: 1671202764}
 --- !u!65 &2111686213
 BoxCollider:
   m_ObjectHideFlags: 0
