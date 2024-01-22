@@ -11,7 +11,7 @@ namespace FrameworkDesign {
     // 因为将Arhictecture对象交给Model持有是在Model对象的构造器方法调用之后。
     // 解决方法:
     // 将Model对象的完全初始化延后，先将Model对象注册进Architecture当中,并让它持有Architecture对象。
-    public interface IModel : IBelongToArchitecture,ICanSetArchitecture
+    public interface IModel : IBelongToArchitecture,ICanSetArchitecture,ICanGetUtility,ICanSendEvent
     {
         // Model类型的初始化生命周期方法，在这里进行完全的初始化。
         void Init();
@@ -19,11 +19,11 @@ namespace FrameworkDesign {
     public abstract class AbstractModel : IModel
     {
         private IArchitecture mArchitecture = null;
-        public IArchitecture GetArchitecture()
+        IArchitecture IBelongToArchitecture.GetArchitecture()
         {
             return mArchitecture;
         }
-        public void SetArchitecture(IArchitecture architecture)
+        void ICanSetArchitecture.SetArchitecture(IArchitecture architecture)
         {
             mArchitecture = architecture;
         }
@@ -32,6 +32,5 @@ namespace FrameworkDesign {
             OnInit();
         }
         protected abstract void OnInit();
-        
     }
 }

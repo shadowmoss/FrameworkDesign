@@ -13,18 +13,18 @@ namespace CounterApp
         // Start is called before the first frame update
         void Start()
         {
-            mCounterModel = GetArchitecture().GetModel<ICounterModel>();
+            mCounterModel = this.GetModel<ICounterModel>();
             mCounterModel.Count.OnValueChanged += OnCountChanged;
             transform.Find("BtnAdd").GetComponent<Button>().onClick.AddListener(() => {
                 // 交互逻辑:会自动触发表现逻辑
                 // 现在以命令模式执行交互逻辑
-                GetArchitecture().SendCommand<AddCountCommand>();
+                this.SendCommand<AddCountCommand>();
             });
             transform.Find("BtnSub").GetComponent<Button>().onClick.AddListener(() =>
             {
                 // 交互逻辑
                 // 现在以命令模式执行交互逻辑
-                GetArchitecture().SendCommand<SubCountCommand>();
+                this.SendCommand<SubCountCommand>();
             });
             OnCountChanged(mCounterModel.Count.Value);
         }
@@ -34,9 +34,10 @@ namespace CounterApp
         private void OnDestroy()
         {
             mCounterModel.Count.OnValueChanged -= OnCountChanged;
+            mCounterModel = null;
         }
         // IController获取框架对象的代码
-        public IArchitecture GetArchitecture()
+        IArchitecture IBelongToArchitecture.GetArchitecture()
         {
             return CounterApp.Instance;
         }
@@ -50,7 +51,7 @@ namespace CounterApp
         // 初始化方法
         protected override void OnInit()
         {
-            IStorage storage = GetArchitecture().GetUtility<IStorage>();
+            IStorage storage = this.GetUtility<IStorage>();
             Count.Value = storage.LoadInt("COUNTER_COUNT", 0);
             Count.OnValueChanged += count =>
             {

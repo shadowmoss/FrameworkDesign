@@ -21,7 +21,7 @@ namespace CounterApp {
             editorCounterApp.Show();
         }
 
-        public IArchitecture GetArchitecture()
+        IArchitecture IBelongToArchitecture.GetArchitecture()
         {
             return CounterApp.Instance;
         }
@@ -30,13 +30,13 @@ namespace CounterApp {
         {
             // +按钮
             if (GUILayout.Button("+")) {
-                GetArchitecture().SendCommand<AddCountCommand>();
+                this.SendCommand<AddCountCommand>();
             }
             // 由于实时刷新，所以直接就渲染数据即可
             GUILayout.Label(CounterApp.Get<ICounterModel>().Count.Value.ToString());
             // -按钮
             if (GUILayout.Button("-")) {
-                GetArchitecture().SendCommand(new AddCountCommand());
+                this.SendCommand(new AddCountCommand());
             }
         }
     }

@@ -7,7 +7,7 @@ namespace FrameworkDesign.Example
 {
     public class StartPanel : MonoBehaviour,IController
     {
-        public IArchitecture GetArchitecture()
+        IArchitecture IBelongToArchitecture.GetArchitecture()
         {
             return PointGame.Instance;
         }
@@ -19,7 +19,7 @@ namespace FrameworkDesign.Example
                 // 将开始Panel自身隐藏
                 gameObject.SetActive(false);
                 // 事件由系统层向表现层发送
-                GetArchitecture().SendCommand<GameStartCommand>();
+                this.SendCommand<GameStartCommand>();
             });
         }
     }

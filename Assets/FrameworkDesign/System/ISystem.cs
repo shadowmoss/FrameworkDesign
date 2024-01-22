@@ -10,16 +10,16 @@ namespace FrameworkDesign {
     // 表现层不与Utility层直接通信
     // 表现层可通过直接获取System层和Model层对象，获取相应的值状态
     // 
-    public interface ISystem : IBelongToArchitecture, ICanSetArchitecture { 
+    public interface ISystem : IBelongToArchitecture, ICanSetArchitecture,ICanGetUtility,ICanGetModel,ICanSendEvent,ICanRegisterEvent{ 
         void Init();
     }
 
     public abstract class AbstractSystem : ISystem {
         private IArchitecture mArchitecture = null;
-        public IArchitecture GetArchitecture() {
+        IArchitecture IBelongToArchitecture.GetArchitecture() {
             return mArchitecture;
         }
-        public void SetArchitecture(IArchitecture architecture)
+        void ICanSetArchitecture.SetArchitecture(IArchitecture architecture)
         {
             mArchitecture = architecture;
         }

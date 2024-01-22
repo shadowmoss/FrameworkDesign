@@ -5,7 +5,7 @@ using UnityEngine;
 namespace FrameworkDesign.Example {
     public class Enemy : MonoBehaviour,IController
     {
-        public IArchitecture GetArchitecture()
+        IArchitecture IBelongToArchitecture.GetArchitecture()
         {
             return PointGame.Instance;
         }
@@ -14,7 +14,7 @@ namespace FrameworkDesign.Example {
         {
             Destroy(this.gameObject);
             // 交互逻辑,替换为Command实现交互逻辑
-            GetArchitecture().SendCommand<KillEnemyCommand>();
+            this.SendCommand<KillEnemyCommand>();
         }
     }
 }

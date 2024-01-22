@@ -7,12 +7,13 @@ namespace FrameworkDesign.Example {
     {
         protected override void OnExecute()
         {
-            PointGame.Get<IGameModel>().KillCount.Value++;
+            this.GetModel<IGameModel>().KillCount.Value++;
 
             if (PointGame.Get<IGameModel>().KillCount.Value >= 10)
             {
                 // 发送 结束事件。
-                GamePassEvent.Trigger();
+                this.SendEvent<GamePassEvent>();
+                //GamePassEvent.Trigger();
             }
         }
     }

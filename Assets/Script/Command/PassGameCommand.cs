@@ -8,7 +8,8 @@ namespace FrameworkDesign.Example
     { 
         protected override void OnExecute()
         {
-            GamePassEvent.Trigger();
+            //GamePassEvent.Trigger();
+            this.SendEvent<GamePassEvent>();
         }
     }
 }

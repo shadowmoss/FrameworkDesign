@@ -12,7 +12,7 @@ namespace CounterApp {
         protected override void OnInit()
         {
             // 通过Count计算当前点击了多少次
-            ICounterModel counterModel = GetArchitecture().GetModel<ICounterModel>();
+            ICounterModel counterModel = this.GetModel<ICounterModel>();
             int preCount = counterModel.Count.Value;
             counterModel.Count.OnValueChanged += (newCount) =>
             {

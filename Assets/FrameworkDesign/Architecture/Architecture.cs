@@ -6,23 +6,43 @@ using UnityEngine;
 namespace FrameworkDesign {
 
     public interface IArchitecture {
+        #region 系统模块相关接口
         // 注册系统层API
         void RegisterSystem<T>(T instance) where T : ISystem;
+        // 提供一个获取ISystem的API
+        T GetSystem<T>() where T : class, ISystem;
+        #endregion
+        #region 模型对象相关接口
         // 提供一个注册IModel的API
         void RegisterModel<T>(T instance) where T : IModel;
         // 提供一个可以获取IModel的APi
-        T GetModel<T>() where T : class,IModel;
-
+        T GetModel<T>() where T : class, IModel;
+        #endregion
+        #region 工具相关接口
         // 提供一个注册Utility的API
         void RegisterUtility<T>(T instance);
 
         // 提供一个获取Utility的API
         T GetUtility<T>() where T :class;
+        #endregion
+        #region 命令相关接口
         // 发送指令
         void SendCommand<T>() where T:ICommand,new();
 
         // 发送指令
         void SendCommand<T>(T command) where T : ICommand;
+        #endregion
+        #region 事件接口
+        // 有关事件的接口
+        // 注册
+        IUnRegister RegisterEvent<T>(Action<T> onEvent);
+        // 注销
+        void UnRegisterEvent<T>(Action<T> onEvent);
+        // 根据事件类型发送事件
+        void SendEvent<T>() where T : new();
+        // 用户自定义事件类型发送事件
+        void SendEvent<T>(T e);
+        #endregion
     }
     public abstract class Architecture<T> : IArchitecture where T : Architecture<T>,new()
     {
@@ -98,6 +118,7 @@ namespace FrameworkDesign {
         #endregion
 
         #region 非静态的API
+        #region Model模块相关接口
         // 提供一个注册Model的API
         public void RegisterModel<T>(T instance) where T : IModel { 
             // 给每个注册进框架的Model持有当前框架对象
@@ -120,6 +141,8 @@ namespace FrameworkDesign {
         {
             return mContainer.Get<T>();
         }
+        #endregion
+        #region 工具模块相关接口
         // 注册工具模块的API
         public void RegisterUtility<T>(T instance)
         {
@@ -130,6 +153,8 @@ namespace FrameworkDesign {
         {
             return mContainer.Get<T>();
         }
+        #endregion
+        #region 系统模块相关接口
         // 注册系统层API
         public void RegisterSystem<T>(T instance) where T : ISystem
         {
@@ -148,7 +173,13 @@ namespace FrameworkDesign {
                 mSystems.Add(instance);
             }
         }
-
+        // 提供一个获取ISystem的API
+        public T GetSystem<T>() where T :class,ISystem
+        {
+            return mContainer.Get<T>();
+        }
+        #endregion
+        #region 命令模块相关接口
         public void SendCommand<T>() where T : ICommand, new()
         {
             T command = new T();
@@ -161,6 +192,30 @@ namespace FrameworkDesign {
             command.SetArchitecture(this);
             command.Execute();
         }
+        #endregion
+        #region 事件模块相关接口
+
+        private ITypeEventSystem mTypeEventSystem = new TypeEventSystem();
+        public IUnRegister RegisterEvent<T>(Action<T> onEvent)
+        {
+            return mTypeEventSystem.Register<T>(onEvent);
+        }
+
+        public void UnRegisterEvent<T>(Action<T> onEvent)
+        {
+            mTypeEventSystem.UnRegister<T>(onEvent);
+        }
+
+        public void SendEvent<T>() where T : new()
+        {
+            mTypeEventSystem.Send<T>();
+        }
+
+        public void SendEvent<T>(T e)
+        {
+            mTypeEventSystem.Send<T>(e);
+        }
+        #endregion
         #endregion
     }
 
